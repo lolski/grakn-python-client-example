@@ -24,7 +24,7 @@ tx.commit()
 tx = session.transaction(grakn.TxType.READ)
 people = tx.query('match $prnt isa person has name "Johnny Sr."; $chld isa person has name "Johnny Jr."; $prntchld(parent: $prnt, child: $chld) isa parentchild; get;')
 for p in people:
-    print("{} name = \"Johnny Sr.\" (prnt) --> (chld) name = \"Johnny Jr.\" via relationship {}".format(p.get('prnt').id, p.get('chld').id, p.get('prntchld').id))
+    print("{} name = \"Johnny Sr.\" (prnt) --> (chld) {} name = \"Johnny Jr.\" via relationship {}".format(p.get('prnt').id, p.get('chld').id, p.get('prntchld').id))
 tx.close()
 
 session.close()
